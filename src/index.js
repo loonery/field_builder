@@ -61,7 +61,7 @@ class FieldBuilderForm extends React.Component {
      * is not already in the list of choices, and that there are not too many inputs. If these checks are passed,
      * the user's buffered choice is added to the list.
      */
-    handleChoiceAddition = (e) => {
+    handleChoiceAddition = () => {
 
         // get the user's attempted input and trim its whitespace (to avoid visual duplicates)
         let attemptedInput = this.state.bufferedChoice;
@@ -108,7 +108,7 @@ class FieldBuilderForm extends React.Component {
      * to remove from an empty list of choices. If list of choices is not empty, pops the most-recently added choice
      * from the list of choices.
      */
-    handleChoiceRemoval = (e) => {
+    handleChoiceRemoval = () => {
 
         // get current state
         let currentChoices = this.state.choices;
@@ -134,7 +134,7 @@ class FieldBuilderForm extends React.Component {
     /**
      * Handles user clicking of submission button.
      */
-    handleSubmit = (e) => {
+    handleSubmit = () => {
 
         const defaultValue = this.state.defaultValue;
         let currentChoices = this.state.choices;
@@ -180,19 +180,13 @@ class FieldBuilderForm extends React.Component {
             order: 'Display Choices in Alphabetical Order'
         })
 
+        // log the console's data
         console.log(outputJSON);
 
         fetch("https://www.mocky.io/v2/566061f21200008e3aabd919", {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                labelValue: this.state.labelValue,
-                typeValue: 'Multi-Select',
-                required: this.state.required,
-                defaultValue: this.state.defaultValue,
-                choices: this.state.choices,
-                order: 'Display Choices in Alphabetical Order'
-            })
+            body: outputJSON
         }).then((response) => {
             // alert on success
             console.log(response);
@@ -224,8 +218,11 @@ class FieldBuilderForm extends React.Component {
         });
     }
 
+    /**
+     * Would handle cancellation of form editing and return us to the main application. As of now, posts an alert.
+     */
     handleCancel = (e) => {
-
+        alert("This is where we'd return to the app, if we had one!");
     }
 
     /**
@@ -586,7 +583,6 @@ class FormLabel extends React.Component {
         )
     }
 }
-
 
 //  the below from the React Website
 // ========================================
