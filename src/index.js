@@ -46,7 +46,7 @@ class FieldBuilderForm extends React.Component {
         // set the state of the buffered choice
         const name = e.target.name;
 
-        // if we're receiving checkbox input, we store a boolean value
+        // if we're receiving checkbox input, we store a boolean value in state
         if (name === "required") {
             this.setState({[name]: e.target.checked});
 
@@ -183,13 +183,13 @@ class FieldBuilderForm extends React.Component {
         // log the console's data
         console.log(outputJSON);
 
-        fetch("https://www.mocky.io/v2/566061f21200008e3aabd919", {
+        fetch("http://www.mocky.io/v2/566061f21200008e3aabd919", {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: outputJSON
         }).then((response) => {
             // alert on success
-            console.log(response);
+            console.log(response.body);
             alert("Form Submitted");
         })
     }
