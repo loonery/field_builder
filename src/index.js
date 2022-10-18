@@ -315,10 +315,10 @@ class FieldBuilderForm extends React.Component {
      */
     renderChoicesField() {
         return (<ChoicesField
-                choicesString={this.state.choicesString}
-                onChange={this.handleInputBuffering}
-                onAdd={this.handleChoiceAddition}
-                onRemove={this.handleChoiceRemoval}
+                choicesString={this.state.choicesString} // passes in string to render in choices component textarea
+                onChange={this.handleInputBuffering}     // passes in function to handle choice input buffering
+                onAdd={this.handleChoiceAddition}        // passes in function to handle adding a bufferred choice
+                onRemove={this.handleChoiceRemoval}      // passes in function to handle adding a bufferred choice
         />
         );
     }
