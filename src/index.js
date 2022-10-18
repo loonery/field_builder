@@ -45,6 +45,7 @@ class FieldBuilderForm extends React.Component {
     handleInputBuffering = (e) => {
         // set the state of the buffered choice
         const name = e.target.name;
+        console.log(name);
 
         // if we're receiving checkbox input, we store a boolean value in state
         if (name === "required") {
@@ -277,13 +278,18 @@ class FieldBuilderForm extends React.Component {
         );
     }
 
-    // Render methods for each subcomponent
+    /**
+     * Parent component method returns child component to render it
+     */
     renderLabelField() {
         return (<LabelField
             onChange={this.handleInputBuffering}
         />
     );}
 
+    /**
+     * Parent component method returns child component to render it
+     */
     renderTypeField() {
         return (<TypeField
                 type={this.state.typeValue}
@@ -292,6 +298,9 @@ class FieldBuilderForm extends React.Component {
         );
     }
 
+    /**
+     * Parent component method returns child component to render it
+     */
     renderDefaultValueField() {
         return (<DefaultValueField
                 onChange={this.handleInputBuffering}
@@ -322,7 +331,7 @@ class FieldBuilderForm extends React.Component {
     renderOrderField() {return <OrderField />}
 
     /**
-     * Renders the Buttons at the bottom of the builder form.
+     * These 3 methods render the buttons at the bottom of the builder form.
      *
      */
     renderCancel() {
@@ -570,7 +579,7 @@ class CancelButton extends React.Component {
 }
 
 /**
- * Renders the button
+ * Renders a label for a form component.
  */
 class FormLabel extends React.Component {
     render() {
